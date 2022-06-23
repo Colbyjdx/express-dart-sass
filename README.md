@@ -1,15 +1,14 @@
-# node-sass-middleware
+# express-dart-sass
 
 Connect/Express middleware for [dart-sass](https://github.com/sass/dart-sass).
 
-[![Main CI Workflow](https://github.com/sass/node-sass-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/sass/node-sass-middleware/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/node-sass-middleware.svg)](http://badge.fury.io/js/node-sass-middleware)
-[![Gitter chat](http://img.shields.io/badge/gitter-sass/node--sass-brightgreen.svg)](https://gitter.im/sass/node-sass)
+[![Main CI Workflow](https://github.com/Colbyjdx/express-dart-sass/actions/workflows/ci.yml/badge.svg)](https://github.com/Colbyjdx/express-dart-sass/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/express-dart-sass.svg)](http://badge.fury.io/js/express-dart-sass)
 
 ## Install
 
 ```bash
-npm install node-sass-middleware
+npm install express-dart-sass
 ```
 
 ## Usage
@@ -20,7 +19,7 @@ Recompile `.scss` or `.sass` files automatically for connect and express based h
 
 ```javascript
 const connect = require('connect')
-const sassMiddleware = require('node-sass-middleware')
+const sassMiddleware = require('express-dart-sass')
 const server = connect.createServer(
   sassMiddleware({
       /* Options */
@@ -42,7 +41,7 @@ Heavily inspired by <https://github.com/LearnBoost/stylus>
 
 ```javascript
 const express = require('express');
-const sassMiddleware = require('node-sass-middleware');
+const sassMiddleware = require('express-dart-sass');
 const path = require('path');
 const app = express();
 app.use(sassMiddleware({
@@ -62,7 +61,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 ```javascript
 const connect = require('connect');
-const sassMiddleware = require('node-sass-middleware');
+const sassMiddleware = require('express-dart-sass');
 const postcssMiddleware = require('postcss-middleware');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -115,7 +114,7 @@ http.createServer(app).listen(3000);
 
 ```javascript
 const express = require('express');
-const sassMiddleware = require('node-sass-middleware');
+const sassMiddleware = require('express-dart-sass');
 const path = require('path');
 const winston = require('winston');
 const app = express();
@@ -125,7 +124,7 @@ app.use(sassMiddleware({
     src: __dirname,
     dest: path.join(__dirname, 'public'),
     debug: true,
-    log: function (severity, key, value) { winston.log(severity, 'node-sass-middleware   %s : %s', key, value); }
+    log: function (severity, key, value) { winston.log(severity, 'express-dart-sass   %s : %s', key, value); }
 }));
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
@@ -134,13 +133,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 ## Contributors
 
-We <3 our contributors! A special thanks to all those who have clocked in some dev time on this project, we really appreciate your hard work. You can find [a full list of those people here](https://github.com/sass/node-sass-middleware/graphs/contributors).
+A special thanks to everyone who worked on the original [sass/node-sass-middleware](https://github.com/sass/node-sass-middleware) project. You can find [a full list of those people here](https://github.com/sass/node-sass-middleware/graphs/contributors).
 
 ### Building and Testing
 
 ```sh
-git clone git@github.com:sass/node-sass-middleware
-cd node-sass-middleware
+git clone https://github.com/Colbyjdx/express-dart-sass.git
+cd express-dart-sass
 
 npm install
 npm test
@@ -156,4 +155,4 @@ npm test
 
 ## Copyright
 
-Copyright (c) 2013+ Andrew Nesbitt. See [LICENSE](https://github.com/sass/node-sass-middleware/blob/master/LICENSE) for details.
+Copyright (c) 2013+ Andrew Nesbitt. See [LICENSE](https://github.com/Colbyjdx/express-dart-sass/blob/master/LICENSE) for details.
