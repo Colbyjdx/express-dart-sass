@@ -1,26 +1,29 @@
 {
-  "author": "Andrew Nesbitt <andrewnez@gmail.com> (http://andrew.github.com)",
-  "name": "node-sass-middleware",
-  "description": "Connect middleware for node-sass",
-  "version": "1.0.1",
+  "author": "Colbyjdx (https://github.com/Colbyjdx)",
+  "name": "express-dart-sass",
+  "description": "Express middleware for dart-sass",
+  "version": "1.0.2",
   "scripts": {
     "lint": "eslint .",
     "test": "mocha"
   },
-  "homepage": "https://github.com/sass/node-sass-middleware",
+  "homepage": "https://github.com/Colbyjdx/express-dart-sass",
   "keywords": [
+    "express",
+    "middleware",
     "sass",
-    "css",
-    "libsass"
+    "dart-sass",
+    "scss",
+    "css"
   ],
   "bugs": {
-    "url": "https://github.com/sass/node-sass-middleware/issues"
+    "url": "https://github.com/Colbyjdx/express-dart-sass/issues"
   },
   "license": "MIT",
   "main": "./middleware.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sass/node-sass-middleware.git"
+    "url": "git://github.com/Colbyjdx/express-dart-sass.git"
   },
   "engines": {
     "node": ">=12.0.0"
