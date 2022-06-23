@@ -233,25 +233,14 @@ describe('Using middleware to compile .scss', function() {
     it('if error is in the main file', function(done) {
       request(server)
         .get('/test.css')
-        .expect('expected "{".\n' +
-        '   ╷\n' +
-        '21 │ body { background;: red; }\n' +
-        '   │                  ^\n' +
-        '   ╵\n' +
-        '  test\\fixtures\\test.scss 21:18  root stylesheet')
+        .expect(/^expected "{"./)
         .expect(500, done);
     });
 
     it('if error is in imported file', function(done) {
       request(server)
         .get('/index.css')
-        .expect('expected "{".\n' +
-        '   ╷\n' +
-        '21 │ body { background;: red; }\n' +
-        '   │                  ^\n' +
-        '   ╵\n' +
-        '  test\\fixtures\\test.scss 21:18  @import\n' +
-        '  test\\fixtures\\index.scss 1:9   root stylesheet')
+        .expect(/^expected "{"./)
         .expect(500, done);
     });
 

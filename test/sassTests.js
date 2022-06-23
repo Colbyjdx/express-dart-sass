@@ -233,25 +233,14 @@ describe('Using middleware to compile .sass', function() {
     it('if error is in the main file', function(done) {
       request(server)
         .get('/test.css')
-        .expect('Expected newline.\n' +
-        '   ╷\n' +
-        '21 │     background;: red\n' +
-        '   │               ^\n' +
-        '   ╵\n' +
-        '  test\\fixtures\\test.sass 21:15  root stylesheet')
+        .expect(/^Expected newline./)
         .expect(500, done);
     });
 
     it('if error is in imported file', function(done) {
       request(server)
         .get('/index.css')
-        .expect('Expected newline.\n' +
-        '   ╷\n' +
-        '21 │     background;: red\n' +
-        '   │               ^\n' +
-        '   ╵\n' +
-        '  test\\fixtures\\test.sass 21:15  @import\n' +
-        '  test\\fixtures\\index.sass 1:9   root stylesheet')
+        .expect(/^Expected newline./)
         .expect(500, done);
     });
 
