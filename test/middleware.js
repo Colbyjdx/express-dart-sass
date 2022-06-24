@@ -4,7 +4,7 @@
 var fs = require('fs'),
     path = require('path'),
     request = require('supertest'),
-    connect = require('connect'),
+    express = require('express'),
     middleware = require('../middleware'),
     fixture = path.join.bind(null, __dirname, 'fixtures'),
     testCssFile = fixture('test.css'),
@@ -62,7 +62,7 @@ describe('Log messages', function() {
   it('should use the provided custom logger', function(done) {
     var loggerArguments;
 
-    var server = connect()
+    var server = express()
       .use(middleware({
         src: fixture(),
         dest: fixture(),
@@ -87,7 +87,7 @@ describe('Log messages', function() {
     var loggerArguments;
     var dest = '/some/static-css/directory/file.css';
 
-    var server = connect()
+    var server = express()
       .use(middleware({
         src: fixture(),
         dest: fixture(),
@@ -114,7 +114,7 @@ describe('Log messages', function() {
     var loggerArguments;
     var dest = '/assets/file.mp4';
 
-    var server = connect()
+    var server = express()
       .use(middleware({
         src: fixture(),
         dest: fixture(),
@@ -163,7 +163,7 @@ describe('Log messages', function() {
 
 describe('Checking for http headers', function() {
   var oneDay = 60 * 60 * 24; // one day
-  var server = connect()
+  var server = express()
     .use(middleware({
       src: fixture(),
       dest: fixture(),

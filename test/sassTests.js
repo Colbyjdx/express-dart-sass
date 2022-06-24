@@ -6,7 +6,7 @@ var fs = require('fs'),
     should = require('should'),
     sass = require('sass'),
     request = require('supertest'),
-    connect = require('connect'),
+    express = require('express'),
     middleware = require('../middleware'),
     fixture = path.join.bind(null, __dirname, 'fixtures'),
     testCssFile = fixture('test.css'),
@@ -17,7 +17,7 @@ var fs = require('fs'),
     testUtils = require('./testUtils');
 
 describe('Using middleware to compile .sass', function() {
-  var server = connect()
+  var server = express()
     .use(middleware({
       src: fixture(),
       dest: fixture(),
@@ -73,7 +73,7 @@ describe('Using middleware to compile .sass', function() {
       var filesrc = fs.readFileSync(testSassFile),
           result = sass.renderSync({ data: filesrc.toString(), indentedSyntax: true }),
           anotherResponse = 'something else',
-          server = connect()
+          server = express()
             .use(middleware({
               response: false,
               src: fixture(),
@@ -185,7 +185,7 @@ describe('Using middleware to compile .sass', function() {
   });
 
   describe('generating source-map for compiled css', function() {
-    var server = connect()
+    var server = express()
       .use(middleware({
         src: fixture(),
         dest: fixture(),

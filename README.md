@@ -1,6 +1,6 @@
 # express-dart-sass
 
-Connect/Express middleware for [dart-sass](https://github.com/sass/dart-sass).
+Express middleware for [dart-sass](https://github.com/sass/dart-sass).
 
 [![Main CI Workflow](https://github.com/Colbyjdx/express-dart-sass/actions/workflows/ci.yml/badge.svg)](https://github.com/Colbyjdx/express-dart-sass/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/express-dart-sass.svg)](http://badge.fury.io/js/express-dart-sass)
@@ -13,29 +13,7 @@ npm install express-dart-sass
 
 ## Usage
 
-Recompile `.scss` or `.sass` files automatically for connect and express based http servers.
-
-### Connect example
-
-```javascript
-const connect = require('connect')
-const sassMiddleware = require('express-dart-sass')
-const server = connect.createServer(
-  sassMiddleware({
-      /* Options */
-      src: __dirname
-    , dest: __dirname + '/public'
-    , debug: true
-    , outputStyle: 'compressed'
-    , prefix:  '/prefix'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-  }),
-  connect.static('/prefix', __dirname + '/public')
-);
-```
-
-There is an example connect app here: <https://github.com/andrew/node-sass-example>
-
-Heavily inspired by <https://github.com/LearnBoost/stylus>
+Recompile `.scss` or `.sass` files automatically for express based http servers.
 
 ### Express example
 
@@ -57,16 +35,16 @@ app.use(sassMiddleware({
 app.use('/public', express.static(path.join(__dirname, 'public')));
 ```
 
-### Connect with other middleware example
+### Express with other middleware example
 
 ```javascript
-const connect = require('connect');
+const express = require('express');
 const sassMiddleware = require('express-dart-sass');
 const postcssMiddleware = require('postcss-middleware');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const http = require('http');
-const app = connect();
+const app = express();
 const destPath = __dirname + '/public';
 app.use(sassMiddleware({
     /* Options */
@@ -87,7 +65,7 @@ app.use(postcssMiddleware({
   }
 }));
 
-http.createServer(app).listen(3000);
+app.listen(3000);
 ```
 
 ### Options
@@ -108,7 +86,7 @@ http.createServer(app).listen(3000);
 * `response`       - `[true | false]`, true by default. To write output directly to response instead of to a file.
 * `root`           - (String) A base path for both source and destination directories.
 
-  For full list of options from original dart-sass project go [here](https://github.com/sass/dart-sass).
+  For full list of options from original dart-sass project go [here](https://sass-lang.com/documentation/js-api/interfaces/LegacyFileOptions).
 
 ### Express example with custom log function
 
